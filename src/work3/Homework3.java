@@ -116,28 +116,30 @@ public class Homework3 {
 		while (lotto[5] == 0) {
 			for (int i = 0; i < 6; i++) {
 
-				int number = (int) (Math.random() * 49 + 1);
+				int number = (int) ((Math.random() * 49) + 1);
 
-				if (number % 10 != hate && number / 10 % 10 != hate) {
+				if (number % 10 != hate && (number / 10) != hate) {
 
-					lotto[i] = number;
+					if (number != lotto[0] && number != lotto[1] && number != lotto[2] && number != lotto[3]
+							&& number != lotto[4] && number != lotto[5]) {
 
+						lotto[i] = number;
+
+					}
 				}
-
 			}
-
 		}
 		for (int j = 0; j < 6; j++) {
-			System.out.print(lotto[j]+"\t");
+			System.out.print(lotto[j] + "\t");
 		}
 
 	}
 
 	public static void main(String[] args) {
 
-		printTriangle();
-		guessZeroToHundred();
-		lotto();
+//		printTriangle();
+//		guessZeroToHundred();
+//		lotto();
 		lottoSix();
 	}
 

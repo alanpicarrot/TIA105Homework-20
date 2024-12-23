@@ -103,12 +103,12 @@ public class Homework2 {
 
 	public static void main(String[] args) {
 
-//		evenAdd();
-//		oneToTenMultipliedFor();
-//		oneToTenMultipliedWhile();
-//		selfMultiplied();
-//		noFour();
-//		tenTriangle();
+		evenAdd();
+		oneToTenMultipliedFor();
+		oneToTenMultipliedWhile();
+		selfMultiplied();
+		noFour();
+		tenTriangle();
 		aBCDEF();
 	}
 
