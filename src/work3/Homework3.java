@@ -114,24 +114,19 @@ public class Homework3 {
 		int[] lotto = new int[6];
 
 		while (lotto[5] == 0) {
-			for (int i = 0; i < 6; i++) {
+			for (int i = 0; i < 6;) {
 
 				int number = (int) ((Math.random() * 49) + 1);
 
-				if (number != 0) {
+				if (number % 10 != hate && (number / 10) != hate) {
 
-					if (number % 10 != hate && (number / 10) != hate) {
+					if (number != lotto[0] && number != lotto[1] && number != lotto[2] && number != lotto[3]
+							&& number != lotto[4] && number != lotto[5]) {
 
-						if (number != lotto[0] && number != lotto[1] && number != lotto[2] && number != lotto[3]
-								&& number != lotto[4] && number != lotto[5]) {
-
-							lotto[i] = number;
-
-						}
+						lotto[i] = number;
+						i++;// 確定有放到數字才加下一個
 					}
-
 				}
-
 			}
 		}
 		for (int j = 0; j < 6; j++) {
