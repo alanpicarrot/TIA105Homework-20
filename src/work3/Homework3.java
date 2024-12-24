@@ -124,8 +124,8 @@ public class Homework3 {
 							&& number != lotto[4] && number != lotto[5]) {
 
 						lotto[i] = number;
-						i++;// 確定有放到數字才加下一個
-					}
+						i++;// 確定有放到數字才往下一個陣列索引
+					}//如果不用上面的寫法，可以在這裡寫 else i--，即遇到不能放的數字，陣列索引要倒退一個重新找
 				}
 			}
 		}
