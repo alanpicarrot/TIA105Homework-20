@@ -118,15 +118,20 @@ public class Homework3 {
 
 				int number = (int) ((Math.random() * 49) + 1);
 
-				if (number % 10 != hate && (number / 10) != hate) {
+				if (number != 0) {
 
-					if (number != lotto[0] && number != lotto[1] && number != lotto[2] && number != lotto[3]
-							&& number != lotto[4] && number != lotto[5]) {
+					if (number % 10 != hate && (number / 10) != hate) {
 
-						lotto[i] = number;
+						if (number != lotto[0] && number != lotto[1] && number != lotto[2] && number != lotto[3]
+								&& number != lotto[4] && number != lotto[5]) {
 
+							lotto[i] = number;
+
+						}
 					}
+
 				}
+
 			}
 		}
 		for (int j = 0; j < 6; j++) {
