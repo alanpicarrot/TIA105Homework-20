@@ -53,6 +53,7 @@ public class Homework3 {
 			}
 		}
 		System.out.println(isTriangle(x));
+		side.close();
 	}
 
 	public static void guessZeroToHundred() {
@@ -83,6 +84,7 @@ public class Homework3 {
 				break;
 		}
 		System.out.println("答對了，答案就是" + guess);
+		input.close();
 	}
 
 	public static void lotto() {
@@ -100,7 +102,7 @@ public class Homework3 {
 				System.out.print(i + "\t");
 
 			}
-		}
+		}input.close();
 	}
 
 	public static void lottoSix() {
@@ -132,15 +134,15 @@ public class Homework3 {
 		for (int j = 0; j < 6; j++) {
 			System.out.print(lotto[j] + "\t");
 		}
-
+		input.close();
 	}
 
 	public static void main(String[] args) {
 
-//		printTriangle();
-//		guessZeroToHundred();
-//		lotto();
+		printTriangle();
+		guessZeroToHundred();
+		lotto();
 		lottoSix();
 	}
-
+	
 }
