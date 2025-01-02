@@ -68,19 +68,19 @@ public class Homework4 {
 	private void loan() {
 
 		int[][] arr = { { 25, 32, 8, 19, 27 }, { 2500, 800, 500, 1000, 1200 } };
-		
+
 		System.out.print("請輸入要借多少錢：");
-		
+
 		Scanner sc = new Scanner(System.in);
 		int loan = (int) sc.nextInt();
 		int count = 0;
-		
+
 		System.out.print("有錢可借的員工編號：");
 
 		for (int i = 0; i < 2; i++) {
 			for (int j = 0; j < 5; j++) {
 				if (arr[i][j] > loan) {
-					
+
 					System.out.print(arr[0][j] + "\t");
 					count++;
 
@@ -90,17 +90,89 @@ public class Homework4 {
 		System.out.print("共" + count + "人！");
 		sc.close();
 	}
-	
-	private void day() {
+
+	private void dayDay() {
 		System.out.println("請輸入yyyy年mm月dd日");
 		Scanner sc = new Scanner(System.in);
 		String input = sc.nextLine();
+
+		String nian = input.substring(0, 4);
+		String yue = input.substring(4, 6);
+		String ri = input.substring(6, 8);
+
+		int year = Integer.parseInt(nian);
+		int month = Integer.parseInt(yue);
+		int day = Integer.parseInt(ri);
+		int sum = 0;
+
+		switch (month) {
+
+		case 1, 3, 5, 7, 8, 10, 12:
+
+			if (day > 31) {
+				System.out.println("日期輸入錯誤，請重新輸入");
+				dayDay();
+			}
+
+			break;
+
+		case 4, 6, 9, 11:
+
+			if (day > 30) {
+				System.out.println("日期輸入錯誤，請重新輸入");
+				dayDay();
+			}
+
+			break;
+
+		case 2:
+			if (year % 4 == 0) {
+				if (day > 29) {
+					System.out.println("日期輸入錯誤，請重新輸入");
+					dayDay();
+				}
+			} else if (day > 28) {
+				System.out.println("日期輸入錯誤，請重新輸入");
+				dayDay();
+			}
+
+			break;
+
+		}
+
+		for (int i = 1; i <= month - 1; i++) {
+
+			switch (i) {
+			case 1, 3, 5, 7, 8, 10, 12:
+
+				sum += 31;
+				break;
+
+			case 4, 6, 9, 11:
+
+				sum += 30;
+				break;
+
+			case 2:
+
+				if (year % 4 == 0) {
+					sum += 29;
+				} else
+					sum += 28;
+				break;
+
+			}
+		}
+
+		sum += day;
+
+		System.out.println(sum);
 		sc.close();
 	}
-	
-	private static void max() {
-		
-	}
+
+//	private static void max() {
+//
+//	}
 
 	public static void main(String[] args) {
 
@@ -110,7 +182,7 @@ public class Homework4 {
 		Hw4.reverseString();
 		Hw4.equals();
 		Hw4.loan();
-		Hw4.day();
+		Hw4.dayDay();
 //		Hw4.max();
 
 	}
