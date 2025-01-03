@@ -90,8 +90,8 @@ public class Homework4 {
 		System.out.print("共" + count + "人！");
 		sc.close();
 	}
-
-	private void dayDay() {
+	
+	private int[] dayDayInput() {
 		System.out.println("請輸入yyyy年mm月dd日");
 		Scanner sc = new Scanner(System.in);
 		String input = sc.nextLine();
@@ -103,44 +103,38 @@ public class Homework4 {
 		int year = Integer.parseInt(nian);
 		int month = Integer.parseInt(yue);
 		int day = Integer.parseInt(ri);
-		int sum = 0;
 
-		switch (month) {
+		int[] date = { year, month, day };
+		
+		return date;
+
+	}
+
+	private boolean dayDayCheck(int[] date) {
+
+		switch (date[1]) {// date[1]是month
 
 		case 1, 3, 5, 7, 8, 10, 12:
 
-			if (day > 31) {
-				System.out.println("日期輸入錯誤，請重新輸入");
-				dayDay();
-			}
-
-			break;
+			return date[2] > 31;
 
 		case 4, 6, 9, 11:
 
-			if (day > 30) {
-				System.out.println("日期輸入錯誤，請重新輸入");
-				dayDay();
-			}
-
-			break;
-
+			return date[2] > 30;
+		
 		case 2:
-			if (year % 4 == 0) {
-				if (day > 29) {
-					System.out.println("日期輸入錯誤，請重新輸入");
-					dayDay();
+			if (date[0] % 4 == 0) {// date[0]是year
+					
+					return date[2] > 29;
 				}
-			} else if (day > 28) {
-				System.out.println("日期輸入錯誤，請重新輸入");
-				dayDay();
-			}
+			}return date[2] > 28;						
+	}
 
-			break;
+	private int dayDaySum(int[] date) {
+		
+		int sum = 0;
 
-		}
-
-		for (int i = 1; i <= month - 1; i++) {
+		for (int i = 1; i <= date[1] - 1; i++) {// date[1]是month
 
 			switch (i) {
 			case 1, 3, 5, 7, 8, 10, 12:
@@ -155,7 +149,7 @@ public class Homework4 {
 
 			case 2:
 
-				if (year % 4 == 0) {
+				if (date[0] % 4 == 0) {// date[0]是year
 					sum += 29;
 				} else
 					sum += 28;
@@ -164,26 +158,54 @@ public class Homework4 {
 			}
 		}
 
-		sum += day;
+		sum += date[2]; // date[2]是day
+		return sum;
 
-		System.out.println(sum);
-		sc.close();
+	}
+	
+	private void dayDay() {
+	   
+		int[] date = dayDayInput();
+		
+		int sum = 0;
+		
+		if(dayDayCheck(date)) {
+			
+			System.out.println("日期格式錯誤，請重新輸入");
+			dayDay();
+			
+		}else {
+			
+			sum = dayDaySum(date);
+			System.out.println("該日期是當年的第 " + sum + " 天。");
+		
+		}
+	    	
 	}
 
-//	private static void max() {
-//
-//	}
+	private static void max() {
+
+		int[][] studentscore = { { 1, 2, 3, 4, 5, 6, 7, 8 }, { 10, 35, 40, 100, 90, 85, 75, 70 },
+				{ 37, 75, 77, 89, 64, 75, 70, 95 }, { 100, 70, 79, 90, 75, 70, 79, 90 },
+				{ 77, 95, 70, 89, 90, 75, 90, 89, 90 }, { 90, 80, 100, 75, 50, 20, 99, 75 } };
+
+		for (int i = 1; i < 6; i++) {
+			for (int j = 0; j < studentscore[i].length; j++) {
+
+			}
+		}
+	}
 
 	public static void main(String[] args) {
 
 		Homework4 Hw4 = new Homework4();
 
-		Hw4.averageGreater();
-		Hw4.reverseString();
-		Hw4.equals();
-		Hw4.loan();
-		Hw4.dayDay();
-//		Hw4.max();
-
+//		Hw4.averageGreater();
+//		Hw4.reverseString();
+//		Hw4.equals();
+//		Hw4.loan();
+//		Hw4.dayDay();
+		Hw4.max();
+		
 	}
 }
