@@ -90,7 +90,7 @@ public class Homework4 {
 		System.out.print("共" + count + "人！");
 		sc.close();
 	}
-	
+
 	private int[] dayDayInput() {
 		System.out.println("請輸入yyyy年mm月dd日");
 		Scanner sc = new Scanner(System.in);
@@ -105,7 +105,7 @@ public class Homework4 {
 		int day = Integer.parseInt(ri);
 
 		int[] date = { year, month, day };
-		
+
 		return date;
 
 	}
@@ -121,17 +121,18 @@ public class Homework4 {
 		case 4, 6, 9, 11:
 
 			return date[2] > 30;
-		
+
 		case 2:
 			if (date[0] % 4 == 0) {// date[0]是year
-					
-					return date[2] > 29;
-				}
-			}return date[2] > 28;						
+
+				return date[2] > 29;
+			}
+		}
+		return date[2] > 28;
 	}
 
 	private int dayDaySum(int[] date) {
-		
+
 		int sum = 0;
 
 		for (int i = 1; i <= date[1] - 1; i++) {// date[1]是month
@@ -162,37 +163,55 @@ public class Homework4 {
 		return sum;
 
 	}
-	
+
 	private void dayDay() {
-	   
+
 		int[] date = dayDayInput();
-		
+
 		int sum = 0;
-		
-		if(dayDayCheck(date)) {
-			
+
+		if (dayDayCheck(date)) {
+
 			System.out.println("日期格式錯誤，請重新輸入");
 			dayDay();
-			
-		}else {
-			
+
+		} else {
+
 			sum = dayDaySum(date);
 			System.out.println("該日期是當年的第 " + sum + " 天。");
-		
+
 		}
-	    	
+
 	}
 
 	private static void max() {
 
-		int[][] studentscore = { { 1, 2, 3, 4, 5, 6, 7, 8 }, { 10, 35, 40, 100, 90, 85, 75, 70 },
-				{ 37, 75, 77, 89, 64, 75, 70, 95 }, { 100, 70, 79, 90, 75, 70, 79, 90 },
-				{ 77, 95, 70, 89, 90, 75, 90, 89, 90 }, { 90, 80, 100, 75, 50, 20, 99, 75 } };
+		int[][] studentscore = { { 1, 2, 3, 4, 5, 6, 7, 8 }, 
+				{ 10, 35, 40, 100, 90, 85, 75, 70 },
+				{ 37, 75, 77, 89, 64, 75, 70, 95 }, 
+				{ 100, 70, 79, 90, 75, 70, 79, 90 },
+				{ 77, 95, 70, 89, 60, 75, 85, 89 }, 
+				{ 98, 70, 89, 90, 75, 90, 89, 90 },
+				{ 90, 80, 100, 75, 50, 20, 99, 75 } };
 
-		for (int i = 1; i < 6; i++) {
-			for (int j = 0; j < studentscore[i].length; j++) {
+		int[] studentmaxtimes = new int[8];
 
+		for (int i = 1; i < 7; i++) {
+			
+			int maxvalue = studentscore[i][0];
+			int maxindex = 0;
+
+			for (int j = 0; j < 8; j++) {
+
+				if (studentscore[i][j] > maxvalue) {
+					maxvalue = studentscore[i][j];
+					maxindex = studentscore[0][j-1];
+				}
 			}
+			studentmaxtimes[maxindex]++;
+		}
+		for (int k = 0; k < 8; k++) {
+			System.out.print(studentmaxtimes[k] + "\t");
 		}
 	}
 
@@ -200,12 +219,12 @@ public class Homework4 {
 
 		Homework4 Hw4 = new Homework4();
 
-//		Hw4.averageGreater();
-//		Hw4.reverseString();
-//		Hw4.equals();
-//		Hw4.loan();
-//		Hw4.dayDay();
+		Hw4.averageGreater();
+		Hw4.reverseString();
+		Hw4.equals();
+		Hw4.loan();
+		Hw4.dayDay();
 		Hw4.max();
-		
+
 	}
 }
