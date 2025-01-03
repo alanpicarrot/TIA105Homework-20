@@ -105,8 +105,10 @@ public class Homework4 {
 		int day = Integer.parseInt(ri);
 
 		int[] date = { year, month, day };
-
+		sc.close();
 		return date;
+		
+		
 
 	}
 
@@ -184,7 +186,7 @@ public class Homework4 {
 
 	}
 
-	private static void max() {
+	private void max() {
 
 		int[][] studentscore = { { 1, 2, 3, 4, 5, 6, 7, 8 }, 
 				{ 10, 35, 40, 100, 90, 85, 75, 70 },
