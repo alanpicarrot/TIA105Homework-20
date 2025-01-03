@@ -211,9 +211,11 @@ public class Homework4 {
 				}
 			}
 			studentmaxtimes[maxindex]++;
-		}
+		}System.out.println("最高分的次數");
 		for (int k = 0; k < 8; k++) {
-			System.out.print(studentmaxtimes[k] + "\t");
+			
+			System.out.println(k+1 + "號\t" + studentmaxtimes[k] + "次\n");
+			
 		}
 	}
 
